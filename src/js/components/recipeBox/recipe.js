@@ -9,7 +9,7 @@ var Recipe = React.createClass({
 
   render: function render() {
     return (
-      <div className="panel panel-default">
+      <div className="panel">
       <div className="panel-heading" role="tab" id={"heading" + this.props.label}>
           <h4 className="panel-title">
             <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
