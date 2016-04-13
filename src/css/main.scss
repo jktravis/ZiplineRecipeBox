@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
+$baseColor: #ffda91;
+$recipeHeading: #FFEC91;
+
 body {
   background-image: url(https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&w=2880&fit=max&s=46a85a1451e47aea5152ade8299f2894);
 }
@@ -15,18 +18,34 @@ body {
   background: #ffda91 linear-gradient(#ffda91, #ffd677, #f3ca76);
   border: 1px solid #565656;
 
-  #recipeList {
-    padding-left: 0;
-    list-style: none;
-
-    li {
-      font-family: 'Indie Flower', cursive;
-      font-size: 1.5em;
+  h4.panel-title {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5em;
+    a {
+      outline: 0;
 
       &:hover {
         cursor: pointer;
         font-weight: bold;
+        text-decoration: none;
+      }
+
+      &:focus {
+        text-decoration: none;
       }
     }
+  }
+}
+
+.panel{
+  background: #DFB769;
+  border: 1px solid #B68932;
+}
+
+.list-group {
+  .list-group-item {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5em;
+    background: #FFF0AA;
   }
 }
