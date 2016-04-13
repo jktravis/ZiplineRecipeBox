@@ -10,3 +10,23 @@ body {
   font-size: 4em;
   text-shadow: #0f0f0f 10px 10px 10px;
 }
+
+.well {
+  background: #ffda91 linear-gradient(#ffda91, #ffd677, #f3ca76);
+  border: 1px solid #565656;
+
+  #recipeList {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.5em;
+
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+}
