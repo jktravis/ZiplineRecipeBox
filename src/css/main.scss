@@ -8,14 +8,14 @@ body {
 }
 
 .text-primary {
-  color: #ffcc00;
+  color: #ffd281;
   font-family: 'Indie Flower', cursive;
   font-size: 4em;
   text-shadow: #0f0f0f 10px 10px 10px;
 }
 
 .well {
-  background: #ffda91 linear-gradient(#ffda91, #ffd677, #f3ca76);
+  background: #71283C linear-gradient(#71283C, #8e324b, #71283C);
   border: 1px solid #565656;
 
   h4.panel-title {
@@ -38,14 +38,21 @@ body {
 }
 
 .panel{
-  background: #DFB769;
-  border: 1px solid #B68932;
+  background: #EAD7B7 linear-gradient(#EAD7B7, #fbe7c5, #EAD7B7);
+  border: 1px solid #6a1c34;
 }
 
 .list-group {
   .list-group-item {
     font-family: 'Indie Flower', cursive;
     font-size: 1.5em;
-    background: #FFF0AA;
+    background: #fbffe3;
+  }
+}
+
+.editable-input {
+  .form-control {
+    height: 1.5em;
+    font-size: 1.5em;
   }
 }
