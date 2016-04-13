@@ -1,12 +1,13 @@
 "use strict";
+
 var React = require('react');
 
-var App = React.createClass({
+var RecipeListItem = React.createClass({
   render: function render() {
     return (
-      <h1>Hello, World</h1>
+      <li>List Item</li>
     );
   }
 });
 
-module.exports = App;
+module.exports = RecipeListItem;
