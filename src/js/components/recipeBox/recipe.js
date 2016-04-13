@@ -27,8 +27,6 @@ var Recipe = React.createClass({
             <li className="list-group-item">food</li>
             <li className="list-group-item">food</li>
           </ul>
-          <button className="btn btn-danger btn-sm">Delete</button>
-          <button className="btn btn-default btn-sm">Edit</button>
         </div>
       </div>
     );
