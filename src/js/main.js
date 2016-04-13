@@ -1,6 +1,6 @@
-require('../../vendor/bootstrap/css/bootstrap.css');
-require('../../vendor/bootstrap/css/bootstrap-theme.css');
-require('../../vendor/bootstrap/js/bootstrap');
+require('bootstrap/dist/css/bootstrap.min.css');
+require('bootstrap/dist/css/bootstrap-theme.min.css');
+require('bootstrap');
 require('../css/main.scss');
 
 var RecipeBox = require('./components/recipeBox/recipeBox');
