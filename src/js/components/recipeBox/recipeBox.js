@@ -45,7 +45,6 @@ var RecipeBox = React.createClass({
         </div>
 
         <div className="col-lg-8 col-lg-offset-2 well row">
-          {console.log(this.state.recipes)}
           <RecipeList recipes={this.state.recipes}/>
         </div>
 
