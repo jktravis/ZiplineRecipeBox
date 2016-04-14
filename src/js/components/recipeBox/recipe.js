@@ -6,13 +6,14 @@ var Recipe = React.createClass({
   propTypes: {
     label: React.PropTypes.string.isRequired,
     name: React.PropTypes.string.isRequired,
-    ingredients: React.PropTypes.array.isRequired
+    ingredients: React.PropTypes.array.isRequired,
+    onDelete: React.PropTypes.func.isRequired
   },
 
   render: function render() {
-    var createList = function (item, index) {
+    var createList = function (item) {
       return (
-        <li className="list-group-item" key={index}>{item}</li>
+        <li className="list-group-item" key={item}>{item}</li>
       );
     };
 
@@ -28,7 +29,7 @@ var Recipe = React.createClass({
             <button className="btn btn-sm btn-link">
               <span className="glyphicon glyphicon-pencil text-muted"/>
             </button>
-            <button className="btn btn-sm btn-link">
+            <button className="btn btn-sm btn-link" data-name={this.props.name} onClick={this.props.onDelete}>
               <span className="glyphicon glyphicon-trash text-muted"/>
             </button>
           </h4>

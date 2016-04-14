@@ -3,32 +3,51 @@
 var React = require('react');
 var RecipeButton = require('./recipeButton');
 var RecipeList = require('./recipeList');
+var Constants = require('../../constants');
 
 var RecipeBox = React.createClass({
   getInitialState: function () {
+    return this.getStorageData();
+  },
+
+  onDelete: function (event) {
+    var storage = window.localStorage;
+    var item = $(event.target).data('name');
+    storage.removeItem(Constants.STORAGE_PREFIX + item);
+    var data = this.getStorageData();
+    console.log(data);
+    console.log(event.target);
+    this.setState(data);
+  },
+
+  setInitialData: function () {
+    let initialData = [
+      {
+        name: "Key Lime Pie",
+        ingredients: ['Keys', 'Limes', 'Pies']
+      },
+      {
+        name: "Meatloaf",
+        ingredients: ['Meat', 'Loaf', 'Ketchup']
+      },
+      {
+        name: "Ham Sandwich",
+        ingredients: ['Ham', 'Cheese', 'Bread']
+      }
+    ];
+
+    initialData.map(function (recipe) {
+      window.localStorage.setItem(Constants.STORAGE_PREFIX + recipe.name, JSON.stringify(recipe));
+    });
+  },
+
+  getStorageData: function () {
     var storage = window.localStorage;
     var keys = Object.keys(storage);
     var data = {recipes: []};
     // some sample data to get things started.
     if (keys.length === 0) {
-      let initialData = [
-        {
-          name: "Key Lime Pie",
-          ingredients: ['Keys', 'Limes', 'Pies']
-        },
-        {
-          name: "Meatloaf",
-          ingredients: ['Meat', 'Loaf', 'Ketchup']
-        },
-        {
-          name: "Ham Sandwich",
-          ingredients: ['Ham', 'Cheese', 'Bread']
-        }
-      ];
-
-      initialData.map(function (recipe) {
-        storage.setItem('jktravis_recipes_' + recipe.name, JSON.stringify(recipe));
-      });
+      this.setInitialData();
     }
 
     for (var i = 0; i < keys.length; i++) {
@@ -45,7 +64,7 @@ var RecipeBox = React.createClass({
         </div>
 
         <div className="col-lg-8 col-lg-offset-2 well row">
-          <RecipeList recipes={this.state.recipes}/>
+          <RecipeList recipes={this.state.recipes} onDelete={this.onDelete} />
         </div>
 
         <div className="col-lg-8 col-lg-offset-2 row">
