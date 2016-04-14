@@ -23,7 +23,7 @@ var Recipe = React.createClass({
             <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                href={"#collapse" + this.props.label} aria-expanded="false"
                aria-controls={"collapse" + this.props.label}>
-              {this.props.label}
+              {this.props.name}
             </a>
             <button className="btn btn-sm btn-link">
               <span className="glyphicon glyphicon-pencil text-muted"/>
