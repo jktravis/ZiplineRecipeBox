@@ -10,9 +10,9 @@ var Recipe = React.createClass({
   },
 
   render: function render() {
-    var createList = function (item) {
+    var createList = function (item, index) {
       return (
-        <li className="list-group-item">{item}</li>
+        <li className="list-group-item" key={index}>{item}</li>
       );
     };
 

@@ -9,8 +9,8 @@ var RecipeList = React.createClass({
   },
 
   render: function render() {
-    var createRecipe = function (item, id) {
-      return (<Recipe name={item.name} ingredients={item.ingredients} 
+    var createRecipe = function (item, index) {
+      return (<Recipe name={item.name} ingredients={item.ingredients} key={index}
                       label={item.name.replace(/[^a-zA-Z0-9]+/g, '')}/>);
     };
     return (
