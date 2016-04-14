@@ -17,7 +17,8 @@ var RecipeBox = React.createClass({
 
   /**
    * Deletes the recipe provided in the event. Uses a data-name attribute on the button as the key.
-   * @param event React-flavored event object
+   * @param {event} event is a react-flavored event object.
+   * @return {*} No return value.
    */
   onDelete: function (event) {
     var storage = window.localStorage;
@@ -30,7 +31,8 @@ var RecipeBox = React.createClass({
   },
 
   /**
-   * Sets the initial data up. Mostly for testing purposes. 
+   * Sets the initial data up. Mostly for testing purposes.
+   * @return {*} No return value.
    */
   setInitialData: function () {
     let initialData = [
