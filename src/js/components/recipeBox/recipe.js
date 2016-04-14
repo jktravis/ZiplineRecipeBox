@@ -4,10 +4,18 @@ var React = require('react');
 
 var Recipe = React.createClass({
   propTypes: {
-    label: React.PropTypes.number.isRequired
+    label: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    ingredients: React.PropTypes.array.isRequired
   },
 
   render: function render() {
+    var createList = function (item) {
+      return (
+        <li className="list-group-item">{item}</li>
+      );
+    };
+
     return (
       <div className="panel">
       <div className="panel-heading" role="tab" id={"heading" + this.props.label}>
@@ -15,7 +23,7 @@ var Recipe = React.createClass({
             <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                href={"#collapse" + this.props.label} aria-expanded="false"
                aria-controls={"collapse" + this.props.label}>
-              Key Lime Pie #{this.props.label}
+              {this.props.label}
             </a>
             <button className="btn btn-sm btn-link">
               <span className="glyphicon glyphicon-pencil text-muted"/>
@@ -28,10 +36,7 @@ var Recipe = React.createClass({
         <div id={"collapse" + this.props.label} className="panel-collapse collapse" role="tabpanel"
              aria-labelledby={"heading" + this.props.label}>
           <ul className="list-group">
-            <li className="list-group-item">Keys</li>
-            <li className="list-group-item">Limes</li>
-            <li className="list-group-item">Pies</li>
-            <li className="list-group-item">Crust</li>
+            {this.props.ingredients.map(createList, this)}
           </ul>
         </div>
       </div>
