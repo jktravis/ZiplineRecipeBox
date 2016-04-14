@@ -6,10 +6,19 @@ var RecipeList = require('./recipeList');
 var Constants = require('../../constants');
 
 var RecipeBox = React.createClass({
+
+  /**
+   * Initializes the state with the current set of storage items.
+   * @returns {*} returns {recipes:[]}
+   */
   getInitialState: function () {
     return this.getStorageData();
   },
 
+  /**
+   * Deletes the recipe provided in the event. Uses a data-name attribute on the button as the key.
+   * @param event React-flavored event object
+   */
   onDelete: function (event) {
     var storage = window.localStorage;
     var item = $(event.target).data('name');
@@ -20,6 +29,9 @@ var RecipeBox = React.createClass({
     this.setState(data);
   },
 
+  /**
+   * Sets the initial data up. Mostly for testing purposes. 
+   */
   setInitialData: function () {
     let initialData = [
       {
@@ -41,14 +53,18 @@ var RecipeBox = React.createClass({
     });
   },
 
+  componentWillMount: function () {
+    var data = this.getStorageData();
+    if (data.recipes.length === 0) {
+      this.setInitialData();
+    }
+    this.setState(this.getStorageData());
+  },
+
   getStorageData: function () {
     var storage = window.localStorage;
     var keys = Object.keys(storage);
     var data = {recipes: []};
-    // some sample data to get things started.
-    if (keys.length === 0) {
-      this.setInitialData();
-    }
 
     for (var i = 0; i < keys.length; i++) {
       data.recipes.push(JSON.parse(storage.getItem(keys[i])));
