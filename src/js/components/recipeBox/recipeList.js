@@ -9,8 +9,9 @@ var RecipeList = React.createClass({
   },
 
   render: function render() {
-    var createRecipe = function (item) {
-      return (<Recipe name={item.name} ingredients={item.ingredients} label={item.name.replace(/\s+/g, '')}/>);
+    var createRecipe = function (item, id) {
+      return (<Recipe name={item.name} ingredients={item.ingredients} 
+                      label={item.name.replace(/[^a-zA-Z0-9]+/g, '')}/>);
     };
     return (
       <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
