@@ -17,10 +17,10 @@ var Recipe = React.createClass({
                aria-controls={"collapse" + this.props.label}>
               Key Lime Pie #{this.props.label}
             </a>
-            <button className="btn btn-sm btn-link" data-toggle="modal" data-target="#myModal">
+            <button className="btn btn-sm btn-link">
               <span className="glyphicon glyphicon-pencil text-muted"/>
             </button>
-            <button className="btn btn-sm btn-link" data-toggle="modal" data-target="#myModal">
+            <button className="btn btn-sm btn-link">
               <span className="glyphicon glyphicon-trash text-muted"/>
             </button>
           </h4>
@@ -33,25 +33,6 @@ var Recipe = React.createClass({
             <li className="list-group-item">Pies</li>
             <li className="list-group-item">Crust</li>
           </ul>
-
-        </div>
-        <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div className="modal-body">
-                ...
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );
