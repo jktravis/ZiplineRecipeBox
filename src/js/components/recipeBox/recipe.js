@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require('react');
+var RecipeModal = require('./recipeModal');
 
 var Recipe = React.createClass({
   propTypes: {
@@ -26,7 +27,7 @@ var Recipe = React.createClass({
                aria-controls={"collapse" + this.props.label}>
               {this.props.name}
             </a>
-            <button className="btn btn-sm btn-link">
+            <button className="btn btn-sm btn-link" data-toggle="modal" data-target="#editRecipe">
               <span className="glyphicon glyphicon-pencil text-muted"/>
             </button>
             <button className="btn btn-sm btn-link" data-name={this.props.name} onClick={this.props.onDelete}>
@@ -40,6 +41,7 @@ var Recipe = React.createClass({
             {this.props.ingredients.map(createList, this)}
           </ul>
         </div>
+        <RecipeModal title="Edit Recipe" modalId="editRecipe"/>
       </div>
     );
   }

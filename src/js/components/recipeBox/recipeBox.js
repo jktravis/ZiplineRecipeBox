@@ -3,8 +3,10 @@
 var React = require('react');
 var RecipeButton = require('./recipeButton');
 var RecipeList = require('./recipeList');
+var RecipeModal = require('./recipeModal');
 var Constants = require('../../constants');
 
+//noinspection JSUnusedGlobalSymbols
 var RecipeBox = React.createClass({
 
   /**
@@ -88,6 +90,7 @@ var RecipeBox = React.createClass({
         <div className="col-lg-8 col-lg-offset-2 row">
           <RecipeButton/>
         </div>
+        <RecipeModal title="Create New Recipe" modalId="createNewRecipe"/>
       </div>
     );
   }
