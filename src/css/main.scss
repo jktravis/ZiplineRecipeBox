@@ -53,6 +53,32 @@ body {
 .btn-default {
   background: #EAD7B7 linear-gradient(#EAD7B7, #fbe7c5, #EAD7B7);
   &:active {
-    background: #d0bfa3 linear-gradient(#d0bfa3, #d0bfa3, #d0bfa3);
+    background: #d0bfa3 linear-gradient(#d0bfa3, #e0ceb0, #d0bfa3);
+  }
+}
+
+.modal-content {
+  background: #71283C linear-gradient(#71283C, #8e324b, #71283C);
+
+  .modal-header, .modal-footer {
+    border-color: #82AA65;
+  }
+  .modal-title, label, .close {
+    color: whitesmoke;
+  }
+  input {
+    background: #fbffe3;
+
+    &:focus {
+      border-color: #82AA65;
+    }
+  }
+  .btn-primary {
+    background: #82AA65 linear-gradient(#82AA65, #96c575, #82AA65);
+    border: 1px solid #82AA65;
+
+    &:hover {
+      background: #96c575 linear-gradient(#96c575, #a2d57f, #96c575);
+    }
   }
 }
