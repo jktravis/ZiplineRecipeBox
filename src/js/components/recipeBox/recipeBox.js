@@ -72,6 +72,13 @@ var RecipeBox = React.createClass({
     return data;
   },
 
+  editModal: function (event) {
+    var name = $(event.target).data('name');
+    var recipe = this.getRecipe(name);
+    $('#recipeTitle').val(name);
+    $('#ingredientList').val(recipe.ingredients.join(','));
+  },
+
   onSave: function (event) {
     var modalid = $(event.target).data('modalid');
     var title = $('#recipeTitle');
@@ -90,6 +97,10 @@ var RecipeBox = React.createClass({
     this.setState(this.getStorageData());
   },
 
+  getRecipe: function (name) {
+    return JSON.parse(window.localStorage.getItem(Constants.STORAGE_PREFIX + name));
+  },
+
   saveRecipe: function (recipe) {
     window.localStorage.setItem(Constants.STORAGE_PREFIX + recipe.name, JSON.stringify(recipe));
   },
@@ -102,13 +113,13 @@ var RecipeBox = React.createClass({
         </div>
 
         <div className="col-lg-8 col-lg-offset-2 well row">
-          <RecipeList recipes={this.state.recipes} onDelete={this.onDelete} />
+          <RecipeList recipes={this.state.recipes} onDelete={this.onDelete} onEdit={this.editModal}/>
         </div>
 
         <div className="col-lg-8 col-lg-offset-2 row">
           <RecipeButton/>
         </div>
-        <RecipeModal title="Create New Recipe" modalId="createNewRecipe" onSave={this.onSave}/>
+        <RecipeModal title="Create/Edit Recipe" modalId="createEditRecipe" onSave={this.onSave}/>
       </div>
     );
   }

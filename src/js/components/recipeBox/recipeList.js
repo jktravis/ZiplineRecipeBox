@@ -6,12 +6,13 @@ var Recipe = require('./recipe');
 var RecipeList = React.createClass({
   propTypes: {
     recipes: React.PropTypes.array.isRequired,
-    onDelete: React.PropTypes.func.isRequired
+    onDelete: React.PropTypes.func.isRequired,
+    onEdit: React.PropTypes.func.isRequired
   },
 
   render: function render() {
     var createRecipe = function (item) {
-      return (<Recipe name={item.name} ingredients={item.ingredients} key={item.name}
+      return (<Recipe name={item.name} ingredients={item.ingredients} key={item.name} onEdit={this.props.onEdit}
                       label={item.name.replace(/[^a-zA-Z0-9]+/g, '')} onDelete={this.props.onDelete}/>);
     };
     return (
