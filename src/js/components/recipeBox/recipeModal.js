@@ -2,11 +2,24 @@
 
 var React = require('react');
 
+//noinspection JSUnusedGlobalSymbols
 var RecipeModal = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
     modalId: React.PropTypes.string.isRequired,
+    onDismiss: React.PropTypes.func.isRequired,
     onSave: React.PropTypes.func.isRequired
+  },
+
+  componentDidMount: function () {
+    var $modal = $('#' + this.props.modalId);
+    var self = this;
+
+    $modal.on('hidden.bs.modal', function () {
+      self.props.onDismiss(this);
+    });
+
+    $modal.find('button[data-modalid]').on('click', this.props.onSave);
   },
 
   render: function render() {
@@ -29,8 +42,7 @@ var RecipeModal = React.createClass({
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" data-modalid={this.props.modalId}
-                      onClick={this.props.onSave}>Save changes
+              <button type="button" className="btn btn-primary" data-modalid={this.props.modalId}>Save changes
               </button>
             </div>
           </div>

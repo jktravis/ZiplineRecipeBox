@@ -121,6 +121,15 @@ var RecipeBox = React.createClass({
     window.localStorage.setItem(Constants.STORAGE_PREFIX + recipe.name, JSON.stringify(recipe));
   },
 
+  /**
+   * Clears <input/> fields in the modal.
+   * @param {modal} modal is the top-level Bootstrap modal element.
+   * @returns {undefined} no return value.
+   */
+  clearModalFields: function (modal) {
+    $(modal).find('input').val('');
+  },
+
   render: function render() {
     return (
       <div className="container-fluid">
@@ -135,7 +144,8 @@ var RecipeBox = React.createClass({
         <div className="col-lg-8 col-lg-offset-2 row">
           <RecipeButton/>
         </div>
-        <RecipeModal title="Create/Edit Recipe" modalId="createEditRecipe" onSave={this.onSave}/>
+        <RecipeModal title="Create/Edit Recipe" modalId="createEditRecipe" onDismiss={this.clearModalFields}
+                     onSave={this.onSave}/>
       </div>
     );
   }
