@@ -41,8 +41,8 @@ var RecipeBox = React.createClass({
         ingredients: ['Keys', 'Limes', 'Pies']
       },
       {
-        name: "Meatloaf",
-        ingredients: ['Meat', 'Loaf', 'Ketchup']
+        name: "Awesome Sauce",
+        ingredients: ['Awesome', 'Sauce']
       },
       {
         name: "Ham Sandwich",
@@ -50,7 +50,11 @@ var RecipeBox = React.createClass({
       }
     ];
 
-    initialData.map(this.saveRecipe);
+    // Sets up initial data. We only want to do it once.
+    if (window.localStorage.getItem(Constants.PRELOAD_DATA_TRIGGER) !== Constants.PRELOAD_DATA_TRIGGER) {
+      initialData.map(this.saveRecipe);
+    }
+    window.localStorage.setItem(Constants.PRELOAD_DATA_TRIGGER, Constants.PRELOAD_DATA_TRIGGER);
   },
 
   componentWillMount: function () {
@@ -67,7 +71,9 @@ var RecipeBox = React.createClass({
     var data = {recipes: []};
 
     for (var i = 0; i < keys.length; i++) {
-      data.recipes.push(JSON.parse(storage.getItem(keys[i])));
+      if (keys[i].substring(0, Constants.STORAGE_PREFIX.length) === Constants.STORAGE_PREFIX) {
+        data.recipes.push(JSON.parse(storage.getItem(keys[i])));
+      }
     }
     return data;
   },
