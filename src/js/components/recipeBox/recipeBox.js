@@ -27,8 +27,6 @@ var RecipeBox = React.createClass({
     var item = $(event.target).data('name');
     storage.removeItem(Constants.STORAGE_PREFIX + item);
     var data = this.getStorageData();
-    console.log(data);
-    console.log(event.target);
     this.setState(data);
   },
 
@@ -52,9 +50,7 @@ var RecipeBox = React.createClass({
       }
     ];
 
-    initialData.map(function (recipe) {
-      window.localStorage.setItem(Constants.STORAGE_PREFIX + recipe.name, JSON.stringify(recipe));
-    });
+    initialData.map(this.saveRecipe);
   },
 
   componentWillMount: function () {
@@ -76,6 +72,28 @@ var RecipeBox = React.createClass({
     return data;
   },
 
+  onSave: function (event) {
+    var modalid = $(event.target).data('modalid');
+    var title = $('#recipeTitle');
+    var ingredients = $('#ingredientList');
+    $('#' + modalid).modal('hide');
+
+    var recipe = {
+      name: title.val(),
+      ingredients: ingredients.val().split(',')
+    };
+
+    this.saveRecipe(recipe);
+
+    ingredients.val('');
+    title.val('');
+    this.setState(this.getStorageData());
+  },
+
+  saveRecipe: function (recipe) {
+    window.localStorage.setItem(Constants.STORAGE_PREFIX + recipe.name, JSON.stringify(recipe));
+  },
+
   render: function render() {
     return (
       <div className="container-fluid">
@@ -90,7 +108,7 @@ var RecipeBox = React.createClass({
         <div className="col-lg-8 col-lg-offset-2 row">
           <RecipeButton/>
         </div>
-        <RecipeModal title="Create New Recipe" modalId="createNewRecipe"/>
+        <RecipeModal title="Create New Recipe" modalId="createNewRecipe" onSave={this.onSave}/>
       </div>
     );
   }
