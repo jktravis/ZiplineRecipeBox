@@ -50,3 +50,9 @@ body {
   }
 }
 
+.btn-default {
+  background: #EAD7B7 linear-gradient(#EAD7B7, #fbe7c5, #EAD7B7);
+  &:active {
+    background: #d0bfa3 linear-gradient(#d0bfa3, #d0bfa3, #d0bfa3);
+  }
+}
