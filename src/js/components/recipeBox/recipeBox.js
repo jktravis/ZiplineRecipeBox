@@ -24,7 +24,7 @@ var RecipeBox = React.createClass({
    */
   onDelete: function (event) {
     var storage = window.localStorage;
-    var item = $(event.target).data('name');
+    var item = this.getClickedButton(event).data('name');
     storage.removeItem(Constants.STORAGE_PREFIX + item);
     var data = this.getStorageData();
     this.setState(data);
@@ -72,8 +72,24 @@ var RecipeBox = React.createClass({
     return data;
   },
 
+  /**
+   * In the case of Chrome (and maybe others), returns the <button> that
+   * wraps the <span> that is sent back on the event.
+   * @param {event} event is a synthetic from React.
+   * @returns {*|jQuery|HTMLElement} A jQuery-wrapped <button/> element.
+   */
+  getClickedButton: function (event) {
+    var evtTarget = $(event.target);
+    if (evtTarget.is('span')) {
+      evtTarget = evtTarget.parent();
+    }
+    return evtTarget;
+  },
+
   editModal: function (event) {
-    var name = $(event.target).data('name');
+    var evtTarget = this.getClickedButton(event);
+
+    var name = evtTarget.data('name');
     var recipe = this.getRecipe(name);
     $('#recipeTitle').val(name);
     $('#ingredientList').val(recipe.ingredients.join(','));
