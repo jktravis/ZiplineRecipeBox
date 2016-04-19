@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "zipline-recipe-box",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "description": "A place to store a list of recipe ingredients. Part of the Free Code Camp Zipline challenges.",
+  "main": "./src/index.html",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3",
@@ -32,9 +32,12 @@
   "scripts": {
     "test": "mocha",
     "start": "webpack-dev-server",
-    "lint": "eslint src/",
-    "postinstall": "mkdir -p vendor/bootstrap && cp -r node_modules/bootstrap/dist/* vendor/bootstrap/ && git remote set-url origin git@github.com:jktravis/`pwd | grep -o '[-_a-zA-Z0-9]*$'`.git"
+    "lint": "eslint src/"
   },
   "author": "jktravis <joshua.travis@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jktravis/ZiplineRecipeBox"
+  }
 }
